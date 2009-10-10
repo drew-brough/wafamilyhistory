@@ -9,9 +9,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091010043430) do
+ActiveRecord::Schema.define(:version => 20091010043807) do
 
-  create_table "classes", :force => true do |t|
+  create_table "courses", :force => true do |t|
     t.string   "name"
     t.string   "instructor"
     t.time     "starttime"

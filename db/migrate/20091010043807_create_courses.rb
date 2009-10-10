@@ -1,6 +1,6 @@
-class CreateClasses < ActiveRecord::Migration
+class CreateCourses < ActiveRecord::Migration
   def self.up
-    create_table :classes do |t|
+    create_table :courses do |t|
       t.string :name
       t.string :instructor
       t.time :starttime
@@ -11,6 +11,6 @@ class CreateClasses < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :classes
+    drop_table :courses
   end
 end

@@ -1,6 +1,6 @@
-<h1>New class</h1>
+<h1>Editing course</h1>
 
-<% form_for(@class) do |f| %>
+<% form_for(@course) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -20,8 +20,9 @@
     <%= f.text_field :note %>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', classes_path %>
+<%= link_to 'Show', @course %> |
+<%= link_to 'Back', courses_path %>

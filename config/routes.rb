@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :classes
+  map.resources :courses
 
   map.resources :registrations
 
