@@ -1,0 +1,13 @@
+<p>
+  <b>Course:</b>
+  <%=h @courses_registration.course_id %>
+</p>
+
+<p>
+  <b>Registration:</b>
+  <%=h @courses_registration.registration_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_courses_registration_path(@courses_registration) %> |
+<%= link_to 'Back', courses_registrations_path %>

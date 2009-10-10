@@ -12,7 +12,7 @@
   <tr>
     <td><%=h course.name %></td>
     <td><%=h course.instructor %></td>
-    <td><%=h course.starttime %></td>
+    <td><%=h course.starttime.to_s(:time) %></td>
     <td><%=h course.note %></td>
     <td><%= link_to 'Show', course %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
