@@ -1,0 +1,23 @@
+<p>
+  <b>Given name:</b>
+  <%=h @registration.given_name %>
+</p>
+
+<p>
+  <b>Surname:</b>
+  <%=h @registration.surname %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @registration.email %>
+</p>
+
+<p>
+  <b>Lunch:</b>
+  <%=h @registration.lunch %>
+</p>
+
+
+<%= link_to 'Edit', edit_registration_path(@registration) %> |
+<%= link_to 'Back', registrations_path %>

@@ -1,0 +1,28 @@
+<h1>Editing registration</h1>
+
+<% form_for(@registration) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :given_name %><br />
+    <%= f.text_field :given_name %>
+  </p>
+  <p>
+    <%= f.label :surname %><br />
+    <%= f.text_field :surname %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :lunch %><br />
+    <%= f.text_field :lunch %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @registration %> |
+<%= link_to 'Back', registrations_path %>
