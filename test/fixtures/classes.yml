@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  instructor: MyString
+  starttime: 2009-10-09 21:34:30
+  note: MyString
+
+two:
+  name: MyString
+  instructor: MyString
+  starttime: 2009-10-09 21:34:30
+  note: MyString
