@@ -19,6 +19,16 @@
     <%= f.label :lunch %><br />
     <%= f.text_field :lunch %>
   </p>
+
+  <% @grouped_courses.keys.sort.each do |starttime| %>
+    <hr />
+    starts at: <%= starttime.to_s(:pretty) %><br>
+    <% @grouped_courses[starttime].each do |course| %>
+      <%= check_box_tag "registration[enrollments_attributes][#{course.id}][course_id]", course.id %>
+      <%= course.name %><br>
+    <% end %>
+  <% end %>
+
   <p>
     <%= f.submit 'Create' %>
   </p>

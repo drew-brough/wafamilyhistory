@@ -1,4 +1,8 @@
 class RegistrationsController < ApplicationController
+  
+  skip_before_filter :super_authenticate, :only => ["index", "new", "create", "show"]
+  before_filter :authenticate, :only => "index"
+  
   # GET /registrations
   # GET /registrations.xml
   def index
@@ -24,7 +28,8 @@ class RegistrationsController < ApplicationController
   # GET /registrations/new
   # GET /registrations/new.xml
   def new
-    @registration = Registration.new
+    @registration = Registration.new(:enrollments => [Enrollment.new])
+    @grouped_courses = Course.live.group_by(&:starttime)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +45,15 @@ class RegistrationsController < ApplicationController
   # POST /registrations
   # POST /registrations.xml
   def create
+    # @course_registration_param_sets = params[:registration].delete(:course_registrations)
     @registration = Registration.new(params[:registration])
 
     respond_to do |format|
       if @registration.save
-        flash[:notice] = 'Registration was successfully created.'
+        # @course_registration_param_sets.each do |course_registration_params|
+        #   CourseRegistration.create!(course_registration_params)
+        # end
+        flash[:notice] = 'Thank you for registering!'
         format.html { redirect_to(@registration) }
         format.xml  { render :xml => @registration, :status => :created, :location => @registration }
       else

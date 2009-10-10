@@ -1,0 +1,22 @@
+<h1>Listing enrollments</h1>
+
+<table>
+  <tr>
+    <th>Course</th>
+    <th>Registration</th>
+  </tr>
+
+<% @enrollments.each do |enrollment| %>
+  <tr>
+    <td><%=h enrollment.course_id %></td>
+    <td><%=h enrollment.registration_id %></td>
+    <td><%= link_to 'Show', enrollment %></td>
+    <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
+    <td><%= link_to 'Destroy', enrollment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New enrollment', new_enrollment_path %>

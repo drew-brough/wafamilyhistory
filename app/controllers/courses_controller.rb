@@ -1,8 +1,12 @@
 class CoursesController < ApplicationController
+  skip_before_filter :super_authenticate
+  before_filter :authenticate
+
   # GET /courses
   # GET /courses.xml
   def index
-    @courses = Course.all
+    @courses = Course.live.all(:order => "starttime, name")
+    @lunch_counts = Registration.all.map(&:lunch).group_by{|lunch| lunch}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,6 +44,9 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.xml
   def create
+    params[:course]["starttime(1i)"] = '2009'
+    params[:course]["starttime(2i)"] = '11'
+    params[:course]["starttime(3i)"] = '14'
     @course = Course.new(params[:course])
 
     respond_to do |format|
@@ -75,7 +82,7 @@ class CoursesController < ApplicationController
   # DELETE /courses/1.xml
   def destroy
     @course = Course.find(params[:id])
-    @course.destroy
+    @course.update_attributes!(:deleted_at => Time.now)
 
     respond_to do |format|
       format.html { redirect_to(courses_url) }

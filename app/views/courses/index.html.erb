@@ -6,20 +6,31 @@
     <th>Instructor</th>
     <th>Starttime</th>
     <th>Note</th>
+    <th>Registration Count</th>
   </tr>
 
 <% @courses.each do |course| %>
   <tr>
     <td><%=h course.name %></td>
     <td><%=h course.instructor %></td>
-    <td><%=h course.starttime.to_s(:time) %></td>
+    <td><%=h course.starttime.to_s(:pretty) %></td>
     <td><%=h course.note %></td>
+    <td><%=h course.registrations.count %></td>
     <td><%= link_to 'Show', course %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
     <td><%= link_to 'Destroy', course, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
+
+<br />
+
+<h4>Lunch counts:</h4>
+<ul>
+  <% @lunch_counts.each do |lunch, array| %>
+    <li><%= lunch %>: <%= array.size %></li>
+  <% end %>
+</ul>
 
 <br />
 

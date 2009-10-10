@@ -18,6 +18,8 @@
   <%=h @registration.lunch %>
 </p>
 
-
-<%= link_to 'Edit', edit_registration_path(@registration) %> |
-<%= link_to 'Back', registrations_path %>
+<ul>
+<% @registration.courses.each do |course| %>
+  <li>Course:<%= course.name %> Start Time:<%= course.starttime.to_s(:pretty) %></li>
+<% end %>
+</ul>

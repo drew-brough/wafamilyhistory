@@ -1,7 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :courses_registrations
+  map.resources :admins
 
-  map.resources :courses
+  map.resources :enrollments
+
+  map.resources :courses, :member => {"admin_edit" => :get}
 
   map.resources :registrations
 
