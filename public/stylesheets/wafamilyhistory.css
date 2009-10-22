@@ -7,3 +7,36 @@ td, th {
 table {
   border-collapse: collapse;
 }
+.name {
+  display:inline;
+  float:left;
+}
+.email {
+  display:block;
+}
+.suggest{
+  font-style:italic;
+  font-size:11px;
+}
+#donation {
+  margin-left:8px;
+}
+.blockstart {
+  background-color:yellow;
+  font-variant:small-caps;
+}
+.title {
+  font-size:16px;
+  font-weight:bold;
+}
+.course {
+  font-weight:bold;
+}
+.instructor {
+  font-style:italic;
+}
+.emphasis {
+  font-size:14px;
+  font-weight:bold;
+  font-variant:small-caps;
+}

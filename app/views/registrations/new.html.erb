@@ -4,36 +4,46 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :given_name %><br />
-    <%= f.text_field :given_name %>
+    <div>
+      <div class="name title"><%= f.label :given_name %><br />
+      <%= f.text_field :given_name %></div>
+      <div class="title"><%= f.label :surname %><br />
+      <%= f.text_field :surname %></div></div>
   </p>
   <p>
-    <%= f.label :surname %><br />
-    <%= f.text_field :surname %>
+    <div class="email">
+      <span class="title"><%= f.label :email %></span><br />
+      <%= f.text_field :email %><br />
+      <span class="suggest">Your email will not be shared/sold and will only be used<br />to contact you in the case of important changes to this event</span>
+    </div>
   </p>
   <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :lunch %><br />
-    <%= f.radio_button :lunch, "Turkey" %> Turkey
-    <%= f.radio_button :lunch, "Ham" %> Ham
-    <%= f.radio_button :lunch, "Vegetarian" %> Vegetarian
-    <%= f.radio_button :lunch, "None" %> None   
+    <div id="lunch">
+    <span class="title"><%= f.label :lunch %></span><span id="donation" class="suggest"> (there is a suggested $7 donation for lunches)</span><br />
+      <div class="radios">
+      <%= f.radio_button :lunch, "Turkey" %> Turkey
+      <%= f.radio_button :lunch, "Ham" %> Ham
+      <%= f.radio_button :lunch, "Vegetarian" %> Vegetarian
+      <%= f.radio_button :lunch, "None" %> None
+      </div>
+    </div>  
   </p>
 
+<div class="title">Class Registration</div>
+<div class="suggest">Please select approximately <span class="emphasis">5 to 7 total</span> classes which you would be interested in attending</div>
+<div class="suggest">Your choice is not binding, but it helps us gauge the class sizes so that we can allocate the required room</div>
+<div class="suggest">Once you've finished checking the boxes next to the classes you would like, please click the <a href="#submitbtn"><span class="emphasis">Submit Registration</span></a> button at the bottom of the page</div>
   <% @grouped_courses.keys.sort.each do |starttime| %>
     <hr />
-    starts at: <%= starttime.to_s(:pretty) %><br>
+    <span class="blockstart title">Classes beginning at <%= starttime.to_s(:pretty) %></span><br>
     <% @grouped_courses[starttime].each do |course| %>
       <%= check_box_tag "registration[enrollments_attributes][#{course.id}][course_id]", course.id %>
-      <%= course.name %><br>
+      <span class="course"><%= course.name %></span> <span class="instructor">taught by <%= course.instructor %></span><br>
     <% end %>
   <% end %>
 
   <p>
-    <%= f.submit 'Submit Registration' %>
+    <a name="submitbtn"><%= f.submit 'Submit Registration' %></a>
   </p>
 <% end %>
 
