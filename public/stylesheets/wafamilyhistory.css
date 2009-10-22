@@ -40,3 +40,6 @@ table {
   font-weight:bold;
   font-variant:small-caps;
 }
+.wrap {
+  max-width:525px;
+}
