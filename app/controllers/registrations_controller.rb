@@ -1,6 +1,7 @@
 class RegistrationsController < ApplicationController
   
   skip_before_filter :super_authenticate, :only => ["index", "new", "create", "show"]
+  skip_before_filter :verify_authenticity_token, :only => 'create'
   before_filter :authenticate, :only => "index"
   
   # GET /registrations
