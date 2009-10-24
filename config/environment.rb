@@ -38,4 +38,30 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+
+  config.after_initialize do
+    # monkey patch to get full error message into hoptoad
+    # http://help.hoptoadapp.com/discussions/problems/247-error-message-length-limit
+    module HoptoadNotifier
+      MAX_ERROR_MESSAGE_LENGTH = 255
+
+      module Catcher
+
+        private
+
+        # Hoptoad truncates our error message at 255 characters, but preserves full strings within
+        # the environment hash.  To preserve our entire error message, we'll stuck it in the
+        # environment hash here if it's too long.
+        def send_to_hoptoad_with_full_error_message(data)
+          if data[:notice] && data[:notice][:error_message].to_s.size > MAX_ERROR_MESSAGE_LENGTH
+            data = data.dup # modify a dup rather than the original to prevent unintended side effects.
+            (data[:notice][:environment] ||= {})[:full_error_message] = data[:notice][:error_message]
+            data[:notice][:error_message] = data[:notice][:error_message][0, MAX_ERROR_MESSAGE_LENGTH]
+          end
+          send_to_hoptoad_without_full_error_message(data)
+        end
+        alias_method_chain :send_to_hoptoad, :full_error_message
+      end
+    end
+  end
 end
