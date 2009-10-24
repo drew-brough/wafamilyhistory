@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resource :setting
+
   map.resources :admins
 
   map.resources :enrollments

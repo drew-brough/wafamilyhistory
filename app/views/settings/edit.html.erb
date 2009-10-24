@@ -1,0 +1,16 @@
+<h1>Editing setting</h1>
+
+<% form_for(@setting, :url => setting_path) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :hoptoad_api_key %><br />
+    <%= f.text_field :hoptoad_api_key %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', setting_path %> |
+<%= link_to 'Destroy', setting_path, :confirm => 'Are you sure?', :method => :delete %>
