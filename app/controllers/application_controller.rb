@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   before_filter :super_authenticate
+  # fix ie frame cookie sharing
+  #  - http://www.post-hipster.com/2008/07/02/stupid-ie6-and-its-iframe-cookie-idiocy-needs-a-throat-punch/
+  #  - http://adamyoung.net/IE-Blocking-iFrame-Cookies
+  #  - http://blog.newnetwork.cc/?p=54
+  before_filter :set_p3p
+
+  # Scrub sensitive parameters from your log
+  filter_parameter_logging :password
 
   protected
 
@@ -22,6 +30,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Scrub sensitive parameters from your log
-  filter_parameter_logging :password
+  def set_p3p
+    response.headers["P3P"] = 'CP="CAO PSA OUR"'
+  end
+
 end
