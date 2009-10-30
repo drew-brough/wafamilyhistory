@@ -32,6 +32,16 @@
   <% end %>
 </ul>
 
+<h4>Reserved Syllabi count:</h4>
+<ul>
+  <% @syllabus_counts.each do |wants_syllabus, array| %>
+    <li><% if !wants_syllabus.nil? %>
+      <%= wants_syllabus %>: <%= array.size %></li>
+      <% else %>
+      Registered before option available: <%= array.size %></li>
+      <% end %>
+  <% end %>
+</ul>
 <br />
 
 <%= link_to 'New course', new_course_path %>

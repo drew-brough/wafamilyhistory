@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.live.all(:order => "starttime, name")
     @lunch_counts = Registration.all.map(&:lunch).group_by{|lunch| lunch}
+    @syllabus_counts = Registration.all.map(&:wants_syllabus).group_by{|wants_syllabus| wants_syllabus}
 
     respond_to do |format|
       format.html # index.html.erb

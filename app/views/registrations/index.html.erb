@@ -6,6 +6,7 @@
     <th>Surname</th>
     <th>Email</th>
     <th>Lunch</th>
+    <th>Syllabus</th>
   </tr>
 
 <% @registrations.each do |registration| %>
@@ -14,6 +15,7 @@
     <td><%=h registration.surname %></td>
     <td><%=h registration.email %></td>
     <td><%=h registration.lunch %></td>
+    <td><%=h registration.wants_syllabus%>
     <td><%= link_to 'Show', registration %></td>
     <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
     <td><%= link_to 'Destroy', registration, :confirm => 'Are you sure?', :method => :delete %></td>
