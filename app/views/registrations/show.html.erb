@@ -19,12 +19,17 @@
 </p>
 
 <p>
-  <b>Wants syllabus:</b>
-  <%=h @registration.wants_syllabus %>
+  <% if @registration.wants_syllabus.nil? %>
+    You registered before the syllabus option was available.  Don't worry, we'll have extras you can purchase when you arrive.
+  <% elsif @registration.wants_syllabus %>
+    <b>Syllabus:</b> You have requested a printed syllabus.  Please remember to bring $4 to help cover the cost of printing
+  <% else %>
+    <b>Syllabus:</b> You have opted not to receive a printed syllabus
+  <% end %>
 </p>
 
 <ul>
 <% @registration.courses.each do |course| %>
-  <li>Course:<%= course.name %> Start Time:<%= course.starttime.to_s(:pretty) %></li>
+  <li><b>Course:</b> <%= course.name %> -- <b>Start Time:</b> <%= course.starttime.to_s(:pretty) %></li>
 <% end %>
 </ul>
