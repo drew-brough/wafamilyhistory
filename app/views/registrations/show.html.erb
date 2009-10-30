@@ -28,8 +28,14 @@
   <% end %>
 </p>
 
-<ul>
+<b>Registered Courses</b>
+<table>
+  <tr>
+    <th>Start Time</th>
+    <th>Course</th>
+  </tr>
 <% @registration.courses.each do |course| %>
-  <li><b>Course:</b> <%= course.name %> -- <b>Start Time:</b> <%= course.starttime.to_s(:pretty) %></li>
+  <tr><td><%= course.starttime.to_s(:pretty) %></td><td><%= course.name %></td></tr>
 <% end %>
-</ul>
+
+</table>
