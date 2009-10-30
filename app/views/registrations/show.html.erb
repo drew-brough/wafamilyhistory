@@ -37,5 +37,8 @@
 <% @registration.courses.each do |course| %>
   <tr><td><%= course.starttime.to_s(:pretty) %></td><td><%= course.name %></td></tr>
 <% end %>
-
 </table>
+
+<p class="noPrint">
+Want to remember the classes you were interested in? <A HREF="javascript:print()">Print this Registration</A>
+</p>
