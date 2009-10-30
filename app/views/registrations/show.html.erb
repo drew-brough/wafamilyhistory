@@ -18,6 +18,11 @@
   <%=h @registration.lunch %>
 </p>
 
+<p>
+  <b>Wants syllabus:</b>
+  <%=h @registration.wants_syllabus %>
+</p>
+
 <ul>
 <% @registration.courses.each do |course| %>
   <li>Course:<%= course.name %> Start Time:<%= course.starttime.to_s(:pretty) %></li>
